@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VT — Product Manager</title>
+<meta name="description" content="Product management portfolio of VT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f3f0;
+    --ink: #111;
+    --line: #111;
+    --accent: #0000ee;
+    --shadow: 4px 4px 0 rgba(17,17,17,.9);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; }
+  body {
+    font-family: "Inter", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+    min-height: 100vh;
+    padding: 1.25rem;
+  }
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  /* ---- top bar ---- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3rem;
+    font-size: .95rem;
+  }
+  header .name { font-weight: 600; }
+  nav { display: flex; gap: 1.5rem; }
+  nav a::before { content: "<"; }
+  nav a::after  { content: ">"; }
+
+  /* ---- window boxes ---- */
+  .window {
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+  }
+  .window .titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding: .4rem .75rem;
+    font-size: .8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    user-select: none;
+  }
+  .window .titlebar .dot {
+    width: .7rem; height: .7rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .window .body { padding: 1.25rem; }
+
+  /* ---- layout grid ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+
+  /* ---- intro ---- */
+  .intro h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .intro p { max-width: 46ch; margin-bottom: .75rem; }
+
+  /* ---- portrait ---- */
+  .portrait .body { padding: 0; }
+  .portrait img { display: block; width: 100%; height: auto; filter: grayscale(1); }
+  .portrait figcaption {
+    border-top: 1px solid var(--line);
+    padding: .4rem .75rem;
+    font-size: .75rem;
+  }
+
+  /* ---- project index ---- */
+  .index ol { list-style: none; counter-reset: proj; }
+  .index li {
+    counter-increment: proj;
+    border-bottom: 1px solid var(--line);
+  }
+  .index li:last-child { border-bottom: 0; }
+  .index a {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1rem;
+    padding: .8rem .25rem;
+    align-items: baseline;
+  }
+  .index a::before {
+    content: counter(proj, decimal-leading-zero);
+    font-size: .8rem;
+  }
+  .index .title { font-weight: 500; }
+  .index .year { font-size: .8rem; }
+
+  /* ---- footer ---- */
+  footer {
+    max-width: 1100px;
+    margin: 3rem auto 0;
+    font-size: .8rem;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="name" href="#">VT</a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#about">Contact</a>
+  </nav>
+</header>
+
+<div class="grid">
+
+  <section class="window intro" id="about">
+    <div class="titlebar"><span>About</span><span class="dot"></span></div>
+    <div class="body">
+      <h1>VT is a product manager building useful things.</h1>
+      <p>Placeholder bio — two or three sentences about who you are, the kinds of products you work on, and what you care about as a PM. Swap this out with your real story.</p>
+      <p>Currently: [Company / role]. Previously: [Company / role].</p>
+    </div>
+  </section>
+
+  <figure class="window portrait">
+    <div class="titlebar"><span>Portrait</span><span class="dot"></span></div>
+    <div class="body">
+      <img src="https://placehold.co/600x700/e8e6e1/111111?text=Your+Photo" alt="Portrait of VT">
+    </div>
+    <figcaption>VT, somewhere, 2026</figcaption>
+  </figure>
+
+  <section class="window index" id="work" style="grid-column: 1 / -1;">
+    <div class="titlebar"><span>Selected Work</span><span class="dot"></span></div>
+    <div class="body">
+      <ol>
+        <li><a href="#"><span class="title">Project One — short outcome-focused description</span><span class="year">2026</span></a></li>
+        <li><a href="#"><span class="title">Project Two — short outcome-focused description</span><span class="year">2025</span></a></li>
+        <li><a href="#"><span class="title">Project Three — short outcome-focused description</span><span class="year">2025</span></a></li>
+        <li><a href="#"><span class="title">Project Four — short outcome-focused description</span><span class="year">2024</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>© 2026 VT</span>
+  <span>Contact coming soon</span>
+</footer>
+
+</body>
+</html>
