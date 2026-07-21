@@ -7,124 +7,146 @@
 <meta name="description" content="Product management portfolio of VT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
+  /* D-DIN Condensed — Copyright (C) 2017 Datto Inc., SIL Open Font License 1.1 */
+  @font-face {
+    font-display: block;
+    font-family: "D-DIN Condensed";
+    src: url("fonts/DDINCondensed.woff2") format("woff2"),
+         url("fonts/DDINCondensed.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+  }
+  @font-face {
+    font-display: block;
+    font-family: "D-DIN Condensed";
+    src: url("fonts/DDINCondensed-Bold.woff2") format("woff2"),
+         url("fonts/DDINCondensed-Bold.woff") format("woff");
+    font-style: normal;
+    font-weight: bold;
+  }
+
   :root {
-    --bg: #f4f3f0;
-    --ink: #111;
-    --line: #111;
-    --accent: #0000ee;
-    --shadow: 4px 4px 0 rgba(17,17,17,.9);
+    --bg: #ffffff;
+    --ink: #000000;
+    --muted: #666;
+    --gutter: 1.5rem;
+    --display: "D-DIN Condensed", "Arial Narrow", sans-serif;
+    --serif: "EB Garamond", Georgia, serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { font-size: 16px; }
+  html { font-size: 100%; }
   body {
-    font-family: "Inter", Helvetica, Arial, sans-serif;
+    font-family: var(--serif);
     background: var(--bg);
     color: var(--ink);
-    letter-spacing: -0.01em;
-    line-height: 1.45;
-    min-height: 100vh;
-    padding: 1.25rem;
+    line-height: 1.5;
+    padding: var(--gutter);
   }
   a { color: var(--ink); text-decoration: none; }
-  a:hover { color: var(--accent); }
+  a:hover { opacity: .5; }
 
   /* ---- top bar ---- */
   header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 3rem;
-    font-size: .95rem;
+    margin-bottom: 4.5rem;
   }
-  header .name { font-weight: 600; }
-  nav { display: flex; gap: 1.5rem; }
+  header .name {
+    font-family: var(--display);
+    font-weight: bold;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  nav { display: flex; gap: var(--gutter); font-family: var(--display); text-transform: uppercase; font-size: .95rem; letter-spacing: .04em; }
   nav a::before { content: "<"; }
   nav a::after  { content: ">"; }
 
-  /* ---- window boxes ---- */
-  .window {
-    background: #fff;
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-    margin-bottom: 1.5rem;
-  }
-  .window .titlebar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--line);
-    padding: .4rem .75rem;
-    font-size: .8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    user-select: none;
-  }
-  .window .titlebar .dot {
-    width: .7rem; height: .7rem;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .window .body { padding: 1.25rem; }
-
-  /* ---- layout grid ---- */
-  .grid {
+  /* ---- 12-column grid ---- */
+  .grid-container {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 1.5rem;
-    align-items: start;
-    max-width: 1100px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
+    max-width: 1200px;
     margin: 0 auto;
   }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .page_container { margin-bottom: 4.5rem; }
+  .col-7 { grid-column: span 7; }
+  .col-5 { grid-column: span 5; }
+  .col-12 { grid-column: span 12; }
+  @media (max-width: 760px) {
+    .col-7, .col-5 { grid-column: span 12; }
+  }
 
   /* ---- intro ---- */
   .intro h1 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
+    font-family: var(--display);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: .01em;
+    margin-bottom: var(--gutter);
   }
-  .intro p { max-width: 46ch; margin-bottom: .75rem; }
+  .intro p { font-size: 1.15rem; max-width: 52ch; margin-bottom: .9rem; }
+  .intro .meta { color: var(--muted); font-style: italic; }
 
   /* ---- portrait ---- */
-  .portrait .body { padding: 0; }
-  .portrait img { display: block; width: 100%; height: auto; filter: grayscale(1); }
+  .portrait img { display: block; width: 100%; height: auto; }
   .portrait figcaption {
-    border-top: 1px solid var(--line);
-    padding: .4rem .75rem;
-    font-size: .75rem;
+    font-size: .95rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: .5rem;
   }
 
-  /* ---- project index ---- */
-  .index ol { list-style: none; counter-reset: proj; }
-  .index li {
-    counter-increment: proj;
-    border-bottom: 1px solid var(--line);
+  /* ---- project entries ---- */
+  .section-label {
+    font-family: var(--display);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: .95rem;
+    letter-spacing: .06em;
+    border-top: 1px solid var(--ink);
+    padding-top: .6rem;
+    margin-bottom: var(--gutter);
   }
-  .index li:last-child { border-bottom: 0; }
-  .index a {
+  .entry {
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
-    gap: 1rem;
-    padding: .8rem .25rem;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gutter);
+    padding: var(--gutter) 0;
+    border-bottom: 1px solid #ddd;
     align-items: baseline;
   }
-  .index a::before {
-    content: counter(proj, decimal-leading-zero);
-    font-size: .8rem;
+  .entry .num { grid-column: span 1; font-family: var(--display); font-size: .95rem; }
+  .entry .title { grid-column: span 4; font-family: var(--display); font-weight: bold; text-transform: uppercase; font-size: 1.3rem; letter-spacing: .02em; }
+  .entry .desc { grid-column: span 5; font-size: 1.05rem; }
+  .entry .year { grid-column: span 2; text-align: right; font-style: italic; color: var(--muted); }
+  @media (max-width: 760px) {
+    .entry .num { grid-column: span 2; }
+    .entry .title { grid-column: span 10; }
+    .entry .desc { grid-column: 3 / span 8; }
+    .entry .year { grid-column: span 2; }
   }
-  .index .title { font-weight: 500; }
-  .index .year { font-size: .8rem; }
 
-  /* ---- footer ---- */
+  /* ---- scroll fade (Cargo-style scroll-transition-fade) ---- */
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .scroll-fade.visible { opacity: 1; transform: none; }
+
   footer {
-    max-width: 1100px;
-    margin: 3rem auto 0;
-    font-size: .8rem;
+    max-width: 1200px;
+    margin: 4.5rem auto 0;
+    font-size: .95rem;
+    font-style: italic;
+    color: var(--muted);
     display: flex;
     justify-content: space-between;
   }
@@ -141,34 +163,44 @@
   </nav>
 </header>
 
-<div class="grid">
+<div class="grid-container">
 
-  <section class="window intro" id="about">
-    <div class="titlebar"><span>About</span><span class="dot"></span></div>
-    <div class="body">
-      <h1>VT is a product manager building useful things.</h1>
-      <p>Placeholder bio — two or three sentences about who you are, the kinds of products you work on, and what you care about as a PM. Swap this out with your real story.</p>
-      <p>Currently: [Company / role]. Previously: [Company / role].</p>
-    </div>
+  <section class="col-7 intro scroll-fade" id="about">
+    <h1>VT is a product manager building useful things.</h1>
+    <p>Placeholder bio — two or three sentences about who you are, the kinds of products you work on, and what you care about as a PM. Swap this out with your real story.</p>
+    <p class="meta">Currently: [Company / role]. Previously: [Company / role].</p>
   </section>
 
-  <figure class="window portrait">
-    <div class="titlebar"><span>Portrait</span><span class="dot"></span></div>
-    <div class="body">
-      <img src="https://placehold.co/600x700/e8e6e1/111111?text=Your+Photo" alt="Portrait of VT">
-    </div>
+  <figure class="col-5 portrait scroll-fade">
+    <img src="https://placehold.co/900x1050/f0efec/999999?text=Your+Photo" alt="Portrait of VT">
     <figcaption>VT, somewhere, 2026</figcaption>
   </figure>
 
-  <section class="window index" id="work" style="grid-column: 1 / -1;">
-    <div class="titlebar"><span>Selected Work</span><span class="dot"></span></div>
-    <div class="body">
-      <ol>
-        <li><a href="#"><span class="title">Project One — short outcome-focused description</span><span class="year">2026</span></a></li>
-        <li><a href="#"><span class="title">Project Two — short outcome-focused description</span><span class="year">2025</span></a></li>
-        <li><a href="#"><span class="title">Project Three — short outcome-focused description</span><span class="year">2025</span></a></li>
-        <li><a href="#"><span class="title">Project Four — short outcome-focused description</span><span class="year">2024</span></a></li>
-      </ol>
+  <section class="col-12 page_container" id="work">
+    <div class="section-label scroll-fade">Selected Work</div>
+    <div class="entry scroll-fade">
+      <span class="num">01</span>
+      <a class="title" href="#">Project One</a>
+      <span class="desc">Short outcome-focused description of the problem, your role, and the result.</span>
+      <span class="year">2026</span>
+    </div>
+    <div class="entry scroll-fade">
+      <span class="num">02</span>
+      <a class="title" href="#">Project Two</a>
+      <span class="desc">Short outcome-focused description of the problem, your role, and the result.</span>
+      <span class="year">2025</span>
+    </div>
+    <div class="entry scroll-fade">
+      <span class="num">03</span>
+      <a class="title" href="#">Project Three</a>
+      <span class="desc">Short outcome-focused description of the problem, your role, and the result.</span>
+      <span class="year">2025</span>
+    </div>
+    <div class="entry scroll-fade">
+      <span class="num">04</span>
+      <a class="title" href="#">Project Four</a>
+      <span class="desc">Short outcome-focused description of the problem, your role, and the result.</span>
+      <span class="year">2024</span>
     </div>
   </section>
 
@@ -178,6 +210,13 @@
   <span>© 2026 VT</span>
   <span>Contact coming soon</span>
 </footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.scroll-fade').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
